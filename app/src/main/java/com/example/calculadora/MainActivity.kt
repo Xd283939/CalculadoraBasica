@@ -1,5 +1,5 @@
 package com.example.calculadora
-
+import android.content.Intent
 import android.icu.text.DecimalFormat
 import android.os.Bundle
 import android.view.View
@@ -26,6 +26,7 @@ class MainActivity : AppCompatActivity() {
 
 
 
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
@@ -33,14 +34,15 @@ class MainActivity : AppCompatActivity() {
         formatDecimal=DecimalFormat("#.##########")
         tvResultado =findViewById(R.id.tvResultado)
         tvResultado2=findViewById(R.id.tvResultado2)
-        /*
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
-            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
-            insets
-            */
 
+
+        val btnChronometer: Button = findViewById(R.id.btnChronometer)
+        btnChronometer.setOnClickListener {
+            val intent = Intent(this, ChronometerActivity::class.java)
+            startActivity(intent)
         }
+        }
+
     fun  cambiarOperador(b: View){
         if(tvResultado.text.isNotEmpty() || primerNumber.toString()!="NaN" ){
 
